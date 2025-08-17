@@ -4,6 +4,9 @@ on:
   workflow_dispatch: # 필요할 때 수동 실행
   repository_dispatch: # 서비스 레포에서 트리거
     types: [deploy]
+  push:
+    branches:
+      - master
 
 jobs:
   deploy:
@@ -14,4 +17,4 @@ jobs:
 
       - name: Docker Compose Pull & Up
         run: |
-          docker-compose up -d --pull always --force-recreate
+          docker compose up -d --pull always --force-recreate
