@@ -17,4 +17,4 @@ jobs:
 
       - name: Docker Compose Pull & Up
         run: |
-          docker compose up -d --pull always --force-recreate
+          docker compose up -d --pull always --force-recreate --remove-orphans
