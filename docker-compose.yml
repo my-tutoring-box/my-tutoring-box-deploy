@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  front:
+    image: mie0719/front:latest
+    container_name: front
+    ports:
+      - "3001:3000"
+    depends_on:
+      - back
+    networks:
+      - app-net
+
+  back:
+    image: mie0719/back:latest
+    container_name: back
+    expose: # 내부 네트워크에서만 접근 가능
+      - "3000"
+    depends_on:
+      - ml
+    networks:
+      - app-net
+
+  ml:
+    image: mie0719/ml:latest
+    container_name: ml
+    expose: # 내부 네트워크에서만 접근 가능
+      - "8000"
+    networks:
+      - app-net
+
+networks:
+  app-net:
+    driver: bridge
