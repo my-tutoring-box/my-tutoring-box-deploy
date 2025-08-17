@@ -14,5 +14,4 @@ jobs:
 
       - name: Docker Compose Pull & Up
         run: |
-          docker-compose pull
-          docker-compose up -d
+          docker-compose up -d --pull always --force-recreate
