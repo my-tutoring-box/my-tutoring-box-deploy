@@ -4,6 +4,7 @@ services:
   front:
     image: mie0719/front:latest
     container_name: front
+    env_file: .env
     ports:
       - "3001:3000"
     depends_on:
@@ -14,6 +15,7 @@ services:
   back:
     image: mie0719/back:latest
     container_name: back
+    env_file: .env.development
     expose: # 내부 네트워크에서만 접근 가능
       - "3000"
     depends_on:
