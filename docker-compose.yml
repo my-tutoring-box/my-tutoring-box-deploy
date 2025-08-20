@@ -2,9 +2,12 @@ version: "3.8"
 
 services:
   front:
+    build:
+      context: .
+      args:
+        - NEXT_PUBLIC_API_URL=http://54.252.225.141:3000
     image: mie0719/front:latest
     container_name: front
-    env_file: /home/ubuntu/app/.env
     ports:
       - "3001:3000"
     depends_on:
@@ -16,8 +19,8 @@ services:
     image: mie0719/back:latest
     container_name: back
     env_file: /home/ubuntu/app/.env.development
-    expose: # 내부 네트워크에서만 접근 가능
-      - "3000"
+    port:
+      - "3000:3000"
     depends_on:
       - ml
     networks:
