@@ -19,7 +19,7 @@ services:
     image: mie0719/back:latest
     container_name: back
     env_file: /home/ubuntu/app/.env.development
-    port:
+    ports:
       - "3000:3000"
     depends_on:
       - ml
